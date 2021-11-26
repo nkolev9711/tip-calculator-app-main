@@ -193,6 +193,11 @@ label[for='numOfPeople'],[for='tip']{
     transition: all 0.2s ease-in;
 }
 
+.reset:hover{
+    cursor: pointer;
+    background-color: var(--light-grayish-cyan-1);
+}
+
 @media only screen and (max-width: 800px) {
     .container{
         flex-direction: column;
