@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono', monospace;
+    font-size: 1em;
+}
+
+:root{
+    --strong-cyan: hsl(172, 67%, 45%);
+    --dark-grayish-cyan-1: hsl(186, 14%, 43%);
+    --dark-grayish-cyan-2: hsl(184, 14%, 56%);
+    --light-grayish-cyan-1: hsl(185, 41%, 84%);
+    --light-grayish-cyan-2: hsl(189, 41%, 97%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --white: hsl(0, 0%, 100%);
+}
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-grayish-cyan-1);
+}
+
+.container{
+    max-width: 860px;
+    height: 453px;
+    display: flex;
+    background-color: var(--white);
+    border-radius: 25px;
+    padding: 35px;
+}
+
+/*LEFT SIDE*/
+
+.leftSide{
+    display: grid;
+    padding: 10px 0;
+}
+
+.selectTip{
+    margin: 30px 0;
+}
+
+.percentGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 10px;
+}
+
+.buttons{
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 15px;
+}
+
+.buttons > *{
+    width: 110px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    background-color: var(--very-dark-cyan);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan)
+}
+
+.numberOfPeople{
+    position: relative;
+}
+
+/*ERROR MESSAGE*/
+.errMsg{
+    position: absolute;
+    right: 10%;
+    color: hsl(353, 69%, 44%);
+}
+
+/*INPUTS*/
+
+.bill:focus,
+.num:focus,
+.customTip:focus{
+    outline:none;
+    border: 2px solid var(--strong-cyan);
+}
+
+.customTip{
+    background-color: var(--light-grayish-cyan-2);
+    text-align: center;
+    font-weight: 700;
+    color: var(--very-dark-cyan);
+}
+
+.bill,
+.num{
+    width: 92%;
+    height: 45px;
+    padding-right: 20px;
+    border:none;
+    border-radius: 10px;
+    margin-top: 5px;
+    color: var(--very-dark-cyan);
+    font-weight: 700;
+    font-size: 20px;
+    text-align: end;
+  }
+
+
+.bill{
+    background: var(--light-grayish-cyan-2) url('images/icon-dollar.svg')  no-repeat 5% 50%;
+}
+
+.num{
+    background: var(--light-grayish-cyan-2) url('images/icon-person.svg')  no-repeat 5% 50%;
+}
+
+
+label[for='numOfPeople'],[for='tip']{
+    font-size: 15px
+}
+
+/*RIGHT SIDE*/
+.rightSide{
+    background-color: var(--very-dark-cyan);
+    border-radius: 10px;
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:  40px 35px 35px 30px;;
+}
+
+
+.right-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
+    width: 100%;
+}
+
+.tip-amount, .total-amount{
+    font-size: 3rem;
+    color: var(--strong-cyan);
+    letter-spacing: -1.5px;
+}
+
+.amount{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amount p{
+    text-align: left;
+    color: var(--white);
+}
+
+.amount span{
+    color: var(--light-grayish-cyan-1);
+}
+
+
+.amountTotal{
+    flex-basis: 38%;
+}
+
+.reset{
+    width: 100%;
+    padding: 10px 100px;
+    text-transform: uppercase;
+    background-color: var(--strong-cyan);
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    color: var(--very-dark-cyan);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+@media only screen and (max-width: 800px) {
+    .container{
+        flex-direction: column;
+        width: 80%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .billInput .bill, 
+    .numberOfPeople input[for='num']{
+        width: 100%;
+    }
+
+    .leftSide, .rightSide{
+        text-align: center;
+    }
+
+    .rightSide{
+        width: 100%;
+    }
+
+    .buttons > *{
+        width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 460px){
+    .container{
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .buttons{
+          grid-template-columns: repeat(2,1fr);
+    }
+
+    .rightSide{
+          font-size: 0.75em;
+    }
+
+    .tip-amount, .total-amount{
+          font-size: 2rem;
+    }
+
+    .reset{
+          width: 90%;
+          padding: 10px 30px;
+    }
+
+
+  }
