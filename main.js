@@ -12,11 +12,9 @@ tipButtons.forEach((btn) => {
         const bill = billInput.value;
         const totalTip = (bill*btn.value);
         
-            const tip = tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+            tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
 
-            const total = totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
-        
-
+            totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
     });
   });
 
@@ -24,10 +22,9 @@ tipButtons.forEach((btn) => {
     const bill = billInput.value;
     const totalTip = (bill*(customTip.value/100));
 
-    const tip = tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+            tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
 
-    const total = totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
-
+            totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;
   });
 
   resetBtn.addEventListener('click', () => {
