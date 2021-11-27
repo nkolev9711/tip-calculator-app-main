@@ -9,12 +9,19 @@ const errorMsg = document.querySelector('.errMsg');
 
 tipButtons.forEach((btn) => {
     btn.addEventListener('click',() => {
-        const bill = billInput.value;
-        const totalTip = (bill*btn.value);
-        
-            tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+        let bill = billInput.value;
 
-            totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
+        if(bill=='' || numberOfPeople.value ==''){
+          bill = 0;
+        }
+        else{
+          const totalTip = (bill*btn.value);
+
+          tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+            
+          totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
+        
+        }
     });
   });
 
