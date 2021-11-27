@@ -15,7 +15,7 @@ tipButtons.forEach((btn) => {
           bill = 0;
         }
         else{
-          const totalTip = (bill*btn.value);
+          const totalTip = bill*btn.value;
 
           tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
             
@@ -25,30 +25,37 @@ tipButtons.forEach((btn) => {
     });
   });
 
-  customTip.addEventListener('input', () => {
-    const bill = billInput.value;
-    const totalTip = (bill*(customTip.value/100));
+customTip.addEventListener('input', () => {
+  let bill = billInput.value;
+    
+  if(bill=='' || numberOfPeople.value ==''){
+      bill = 0;
+  }
+  else{
+    const totalTip = bill*(customTip.value/100);
 
-            tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+    tipAmountPerPerson.textContent = '$' + Math.floor((totalTip/numberOfPeople.value) * 100) / 100;
+  
+    totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;    
+  
+  }
+});
 
-            totalAmountPerPerson.textContent = '$' + Math.round(((+bill + totalTip)/numberOfPeople.value) * 100) / 100;
-  });
+resetBtn.addEventListener('click', () => {
+    tipAmountPerPerson.textContent = '$0';
+    totalAmountPerPerson.textContent = '$0';
+    billInput.value = '';
+    numberOfPeople.value = '';
+    customTip.value = '';
+});
 
-  resetBtn.addEventListener('click', () => {
-      tipAmountPerPerson.textContent = '$0';
-      totalAmountPerPerson.textContent = '$0';
-      billInput.value = '';
-      numberOfPeople.value = '';
-      customTip.value = '';
-  });
-
-  numberOfPeople.addEventListener('input', () => {
-    if(numberOfPeople.value != 0 || numberOfPeople.value == '' ){
-        numberOfPeople.style.borderColor="hsl(172, 67%, 45%)"
-        errorMsg.innerText = ""
-       }
-       else if(numberOfPeople.value == 0){
-        numberOfPeople.style.borderColor ="hsl(353, 69%, 44%)";
-        errorMsg.innerText = "Can't be zero"
-       }
-  })
+numberOfPeople.addEventListener('input', () => {
+  if(numberOfPeople.value != 0 || numberOfPeople.value == '' ){
+      numberOfPeople.style.borderColor="hsl(172, 67%, 45%)"
+      errorMsg.innerText = ""
+     }
+     else if(numberOfPeople.value == 0){
+      numberOfPeople.style.borderColor ="hsl(353, 69%, 44%)";
+      errorMsg.innerText = "Can't be zero"
+     }
+})
